@@ -1,8 +1,18 @@
 <html>
 	<head>
-		<script src="js/index.js"></script>
+		<meta charset='utf-8' />
+		<title>Vanilla JS Custom Vimeo Player</title>
+		<link rel='stylesheet' href='css/style.css'></link>
+		<script src='js/index.js'></script>
 	</head>
 	<body>
-		<video src="https://player.vimeo.com/external/76979871.hd.mp4?s=700bf8f30f8f8114cc372e94c4156aaf&profile_id=113" width="480" height="270" poster="assets/vimeo_poster.gif" controls />
+		<section id='Player'>
+			<video id='Player-video' poster="assets/vimeo_poster.gif" controls>
+				<source src='https://player.vimeo.com/external/76979871.hd.mp4?s=700bf8f30f8f8114cc372e94c4156aaf&profile_id=113'> 
+			</video>
+			<div id='Player-controls'>
+				<button id='Player-controls-play-pause' class='play' title='play' onClick='togglePlayPause();'>Play</button>
+			</div>
+		</section>
 	</body>
 <html>
