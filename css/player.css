@@ -1,0 +1,18 @@
+#Player {
+	position: absolute;
+	background: black;
+	width: 536px;
+	height: 301px;
+	-webkit-font-smoothing: auto;
+	line-height: normal;
+	border-collapse: separate;
+	-webkit-user-select: none;
+}
+#Player * {
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+}
+#Player-video {
+	width: 100%;
+	height: auto;
+}

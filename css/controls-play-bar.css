@@ -1,0 +1,81 @@
+#ControlsPlayBar {
+	display: flex;
+	flex: 1;
+	justify-content: flex-end;
+	position: relative;
+	height: 2.2em;
+	padding: .7em;
+	border-radius: 2px;
+	background: rgba(23,35,34,.75);
+}
+.ControlsPlayBar-progress {
+	flex: 1;
+	border: .1em solid #666;
+	position: relative;
+}
+.ControlsPlayBar-buffer {
+	width: 100%;
+	overflow: hidden;
+	border-top: 0;
+	border-bottom: 0;
+	position: absolute;
+	border: .1em solid transparent;
+	height: 100%;
+	background-clip:padding-box !important;
+}
+.ControlsPlayBar-loaded {
+	width: 20%;
+	background: #666;
+	position: absolute;
+    border: .1em solid transparent;
+    height: 100%;
+    background-clip: padding-box!important;
+}
+.ControlsPlayBar-played {
+	width: 10%;
+	background-color: rgb(0, 173, 239);
+	position: absolute;
+	border: .1em solid transparent;
+	height: 100%;
+	background-clip: padding-box!important;
+}
+.ControlsPlayBar-ghost-timecode {
+	margin-left: 0;
+	-webkit-transition: opacity 250ms ease-out;
+	transition: opacity 250ms ease-out;
+}
+.ControlsPlaybar-timecode {
+	position: absolute;
+	left: 0;
+	top: 0;
+	margin: -1.3em 0 0 -1.2em;
+}
+.ControlsPlayBar-box {
+	background: #fff;
+	color: #000;
+	display: inline-block;
+	margin-left: 3.5em;
+	cursor: -webkit-grab;
+	cursor: -moz-grab;
+	cursor: grab;
+	padding: .2em .4em;
+	font: .7em Verdana,sans-serif;
+	position: relative;
+	left: -50%;
+	box-shadow: .1em .1em 0 rgba(0,0,0,.7);
+}
+.ControlsPlayBar-box:before {
+	border-top-color: rgba(0,0,0,.7);
+	margin-left: -.2em;
+	bottom: -.4em;
+}
+.ControlsPlayBar-box:after {
+	border-left: .3em solid transparent;
+	border-right: .3em solid transparent;
+	border-top: .3em solid #fff;
+	bottom: -.3em;
+	content: "";
+	left: 50%;
+	margin-left: -.3em;
+	position: absolute;
+}

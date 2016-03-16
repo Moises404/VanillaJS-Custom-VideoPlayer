@@ -2,7 +2,10 @@
 	<head>
 		<meta charset='utf-8' />
 		<title>Vanilla JS Custom Vimeo Player</title>
-		<link rel='stylesheet' href='css/style.css'></link>
+		<link rel='stylesheet' href='css/main.css'></link>
+		<link rel='stylesheet' href='css/player.css'></link>
+		<link rel='stylesheet' href='css/controls.css'></link>
+		<link rel='stylesheet' href='css/controls-play-bar.css'></link>
 		<script src='js/index.js'></script>
 	</head>
 	<body>
@@ -21,6 +24,17 @@
 							<svg viewBox="0 0 20 20" preserveAspectRatio="xMidYMid" tabindex="-1"><rect class="fill" width="6" height="20" x="0" y="0"></rect><rect class="fill" width="6" height="20" x="12" y="0"></rect></svg>
 						</div>
 					</button>
+					<div id='ControlsPlayBar'>
+						<div class='ControlsPlayBar-progress'>
+							<div class='ControlsPlayBar-buffer'></div>
+							<div class='ControlsPlayBar-loaded'></div>
+							<div class='ControlsPlayBar-played'></div>
+							<div class='ControlsPlayBar-ghost-timecode'></div>
+							<div class='ControlsPlayBar-timecode'>
+								<div class='ControlsPlayBar-box'>00:00</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>

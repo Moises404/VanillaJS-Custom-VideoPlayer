@@ -1,0 +1,17 @@
+button {
+	text-rendering: auto;
+	color: initial;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: start;
+	margin: 0em 0em 0em 0em;
+	border: none;
+	border
+}
+button:focus {
+	outline: none;
+}
