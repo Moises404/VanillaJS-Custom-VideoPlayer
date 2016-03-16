@@ -13,15 +13,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 function initPlayer() {
-	Player 		 	= document.getElementById('Player-video');
-	PlayPauseBtn 	= document.getElementById('Controls-play-pause');
-	PlayDiv 	 	= document.getElementsByClassName('Controls-play-icon')[0];
-	PauseDiv 	 	= document.getElementsByClassName('Controls-pause-icon')[0];
-	ControlsWrapper = document.getElementById('Controls-wrapper');
-	Controls 	 	= document.getElementById('Controls');
+	Player 		 		 = document.getElementById('Player-video');
+	PlayPauseBtn 		 = document.getElementById('Controls-play-pause');
+	PlayDiv 	 		 = document.getElementsByClassName('Controls-play-icon')[0];
+	PauseDiv 	 		 = document.getElementsByClassName('Controls-pause-icon')[0];
+	ControlsWrapper 	 = document.getElementById('Controls-wrapper');
+	ControlsClickWrapper = document.getElementById('Controls-click-wrapper');
+	Controls 	 		 = document.getElementById('Controls');
 
-	PlayPauseBtn.addEventListener('click', function () { togglePlayPause(); });
-	ControlsWrapper.addEventListener('click', function () { togglePlayPause(); });
+	PlayPauseBtn.addEventListener('click', function () { togglePlayPause('PlayPauseBtn'); });
+	ControlsClickWrapper.addEventListener('click', function () { togglePlayPause('ControlsWrapper'); });
 
 	Player.controls = false;
 	console.log(Player);
@@ -29,7 +30,9 @@ function initPlayer() {
 	initControlHover();
 }
 
-function togglePlayPause() {
+function togglePlayPause(context) {
+	console.log(context);
+
 	var PlayDivCN = PlayDiv.classList,
 		PauseDivCN = PauseDiv.classList;
 
@@ -37,17 +40,18 @@ function togglePlayPause() {
 		PlayPauseBtn.title = 'Pause';
 		PlayDivCN.remove('--active');
 		PauseDivCN.add('--active');
+		console.log('Pause');
 		Player.play();
 	} else {
 		PlayPauseBtn.title = 'Play';
 		PlayDivCN.add('--active');
 		PauseDivCN.remove('--active');
+		console.log('Play');
 		Player.pause();
 	}
 }
 
-function initControlHover() {
-	  
+function initControlHover() {  
 	  ControlsWrapper.addEventListener('mouseenter', function( event ) {   
 	    Controls.classList.add('--fadeIn');
 	    Controls.classList.remove('--fadeOut');
