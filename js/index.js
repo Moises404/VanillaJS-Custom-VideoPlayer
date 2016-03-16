@@ -1,31 +1,62 @@
 console.log('Hello Vimeo!');
 
-
-var Player;
+var Player,
+	PlayPauseBtn,
+	PlayDiv,
+	PauseDiv,
+	ControlsWrapper,
+	Controls;
 
 document.addEventListener('DOMContentLoaded', function() {
-	initialisePlayer();
+	initPlayer();
 }, false);
 
-function initialisePlayer() {
-	Player = document.getElementById('Player-video');
+
+function initPlayer() {
+	Player 		 	= document.getElementById('Player-video');
+	PlayPauseBtn 	= document.getElementById('Controls-play-pause');
+	PlayDiv 	 	= document.getElementsByClassName('Controls-play-icon')[0];
+	PauseDiv 	 	= document.getElementsByClassName('Controls-pause-icon')[0];
+	ControlsWrapper = document.getElementById('Controls-wrapper');
+	Controls 	 	= document.getElementById('Controls');
+
+	PlayPauseBtn.addEventListener('click', function () { togglePlayPause(); });
+	ControlsWrapper.addEventListener('click', function () { togglePlayPause(); });
+
 	Player.controls = false;
 	console.log(Player);
+
+	initControlHover();
 }
 
 function togglePlayPause() {
-	var btn = document.getElementById('Player-controls-play-pause');
+	var PlayDivCN = PlayDiv.classList,
+		PauseDivCN = PauseDiv.classList;
+
 	if (Player.paused || Player.ended) {
-		btn.title = 'pause';
-		btn.innerHTML = 'pause';
-		btn.className = 'pause';
+		PlayPauseBtn.title = 'Pause';
+		PlayDivCN.remove('--active');
+		PauseDivCN.add('--active');
 		Player.play();
 	} else {
-		btn.title = 'play';
-		btn.innerHTML = 'play';
-		btn.className = 'play';
+		PlayPauseBtn.title = 'Play';
+		PlayDivCN.add('--active');
+		PauseDivCN.remove('--active');
 		Player.pause();
 	}
+}
+
+function initControlHover() {
+	  
+	  ControlsWrapper.addEventListener('mouseenter', function( event ) {   
+	    Controls.classList.add('--fadeIn');
+	    Controls.classList.remove('--fadeOut');
+	  }, false);
+
+	  ControlsWrapper.addEventListener('mouseleave', function( event ) {   
+	    Controls.classList.add('--fadeOut');
+	    Controls.classList.remove('--fadeIn');
+	  }, false);
 }
 
 function changeButtonType(btn, value) {
