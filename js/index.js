@@ -5,7 +5,8 @@ var Player,
 	PlayDiv,
 	PauseDiv,
 	ControlsWrapper,
-	Controls;
+	Controls,
+	ProgressBar;
 
 document.addEventListener('DOMContentLoaded', function() {
 	initPlayer();
@@ -20,9 +21,13 @@ function initPlayer() {
 	ControlsWrapper 	 = document.getElementById('Controls-wrapper');
 	ControlsClickWrapper = document.getElementById('Controls-click-wrapper');
 	Controls 	 		 = document.getElementById('Controls');
+	ProgressBar 		 = document.getElementById('ControlsPlayBar-progress');
+	ProgressBarPlayed	 = document.getElementsByClassName('ControlsPlayBar-played')[0];
+	ProgressBarLoaded	 = document.getElementsByClassName('ControlsPlayBar-loaded')[0];
 
 	PlayPauseBtn.addEventListener('click', function () { togglePlayPause('PlayPauseBtn'); });
 	ControlsClickWrapper.addEventListener('click', function () { togglePlayPause('ControlsWrapper'); });
+	Player.addEventListener('timeupdate', updateProgressBar, false);
 
 	Player.controls = false;
 	console.log(Player);
@@ -31,8 +36,6 @@ function initPlayer() {
 }
 
 function togglePlayPause(context) {
-	console.log(context);
-
 	var PlayDivCN = PlayDiv.classList,
 		PauseDivCN = PauseDiv.classList;
 
@@ -40,13 +43,11 @@ function togglePlayPause(context) {
 		PlayPauseBtn.title = 'Pause';
 		PlayDivCN.remove('--active');
 		PauseDivCN.add('--active');
-		console.log('Pause');
 		Player.play();
 	} else {
 		PlayPauseBtn.title = 'Play';
 		PlayDivCN.add('--active');
 		PauseDivCN.remove('--active');
-		console.log('Play');
 		Player.pause();
 	}
 }
@@ -62,6 +63,18 @@ function initControlHover() {
 	    Controls.classList.remove('--fadeIn');
 	  }, false);
 }
+
+function updateProgressBar() {
+	var bufferedEnd = Player.buffered.end(Player.buffered.length - 1);
+	var duration = Player.duration;
+
+	var currentPlayed = Math.floor((100 / Player.duration) * Player.currentTime),
+		currentLoaded = ((bufferedEnd / duration) * 100);
+	
+	ProgressBarPlayed.style.width = currentPlayed + '%';
+	ProgressBarLoaded.style.width =  currentLoaded + '%';
+}
+
 
 function changeButtonType(btn, value) {
 	btn.title = value;
